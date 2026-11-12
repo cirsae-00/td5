@@ -1,0 +1,43 @@
+@startuml resFer
+
+top to bottom direction
+
+class ligneFerroviaire  {  
+
+}
+
+class Gare {
+    - String nom
+    - ligneFerroviaire ligneFerroviaire
+
+
+}
+
+class Train {
+
+    - Gare gareOrigine
+    - Gare gareArrivee
+    - String proprietes
+
+}
+
+class Capteur {
+
+}
+
+class Barrière {
+
+    - Bool estOuverte
+
+}
+
+
+ligneFerroviaire "1..*\maLigneFerroviaire" -- "2..*\maGare" Gare : comporter 
+ligneFerroviaire "1\maLigneFerroviaire" <.. "0..*\mesTrains" Train : utiliser
+ligneFerroviaire "1\maLigneFerroviare" *-- "2..*\mesCapteurs" Capteur : appartient
+ligneFerroviaire "1" *-- "2..*\mesBarrières" Barrière : appartient
+Capteur "1\monCapteur" -- "1\maBarrière" Barrière : associé
+
+
+
+@enduml
