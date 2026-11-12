@@ -1,0 +1,52 @@
+@startuml locBungalows
+
+    class Réservation {
+
+        - int idRéservation
+        - String nom
+        - String prénom
+        - String adresse
+        - String numTel
+        - String mail
+        - int nbAdultes
+        - int nbEnfants
+
+    }
+
+    class Bungalow {
+
+        - String typeBungalow
+        - Bool disponible
+
+    }
+
+    class Séjour {
+
+        - int prix
+        - Date dateArrivée
+        - Date dateDépart
+
+    }
+
+    class Réparation {
+
+        - Date dateDébut
+        - Date dateFin
+        - String typeRéparation
+
+
+    }
+
+    class EtatLieux {
+
+        - Bool facturé
+        - int prixEtatLieux
+
+    }
+
+    Réservation "1..*" o-- "1" Bungalow : privatiser
+    Réservation "1" *-- "1" Séjour : créer
+    Réparation "1" --> "0..*" Bungalow : réparer
+    Séjour "1" *-- "1" EtatLieux : effectuer
+
+@enduml
